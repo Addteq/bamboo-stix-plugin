@@ -1,0 +1,1 @@
+[@ww.textfield labelKey="com.addteq.bamboo.plugin.say" name="say" required='true'/]

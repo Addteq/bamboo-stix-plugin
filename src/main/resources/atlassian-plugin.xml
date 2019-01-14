@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}"
+	name="REST Add-on for Addteq's Stix Mobile Application"
+	plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+		<param name="atlassian-licensing-enabled">true</param>
+		<!-- Support for the following marketing assets has been implemented -->
+		<param name="plugin-icon">images/pluginIcon.png</param>
+		<param name="plugin-logo">images/pluginLogo.png</param>
+		<!-- Support for the following marketing assets will be implemented soon -->
+		<param name="plugin-banner">images/pluginBanner.png</param>
+	</plugin-info>
+	<!-- internationalize your plugin -->
+	<resource type="i18n" name="com.addteq.bamboo.plugin language"
+		location="english" />
+	
+	<component-import key="pluginAccessor"
+		interface="com.atlassian.plugin.PluginAccessor" />
+	<component-import key="pluginController"
+		interface="com.atlassian.plugin.PluginController" />
+	<component-import key="txTemplate"
+		interface="com.atlassian.sal.api.transaction.TransactionTemplate" />
+	<component-import key="applicationProperties"
+		interface="com.atlassian.sal.api.ApplicationProperties" />
+	<component-import key="templateRenderer"
+		interface="com.atlassian.templaterenderer.TemplateRenderer" />
+	<component-import key="pluginSettingsFactory"
+		interface="com.atlassian.sal.api.pluginsettings.PluginSettingsFactory" />
+	<component-import key="loginUriProvider"
+		interface="com.atlassian.sal.api.auth.LoginUriProvider" />
+	<component-import key="userManager"
+		interface="com.atlassian.sal.api.user.UserManager" />
+	<component-import key="i18nResolver"
+		interface="com.atlassian.sal.api.message.I18nResolver" />
+	<component-import key="bambooLicenseManager"
+		interface="com.atlassian.bamboo.license.BambooLicenseManager" />
+	<component-import key="planManager"
+		interface="com.atlassian.bamboo.plan.PlanManager" />
+	<component-import key="resultsSummaryManager"
+		interface="com.atlassian.bamboo.resultsummary.ResultsSummaryManager" />
+	<component-import key="administrationConfigurationManager"
+		interface="com.atlassian.bamboo.configuration.AdministrationConfigurationManager" />
+        <component-import key="artifactLinkManager"
+                interface="com.atlassian.bamboo.build.artifact.ArtifactLinkManager" />
+	<!-- <component-import key="buildLoggerManager"interface="com.atlassian.bamboo.build.logger.BuildLogger"/> -->
+	<!-- <component-import key ="buildLogFileAccessorFactory" interface="com.atlassian.bamboo.build.logger.BuildLogFileAccessorFactory"/> -->
+	<component key="thirdPartyPluginLicenseStorageManager"
+		class="com.atlassian.upm.license.storage.lib.ThirdPartyPluginLicenseStorageManagerImpl" />
+	<component key="pluginLicenseStoragePluginInstaller"
+		class="com.atlassian.upm.license.storage.lib.PluginLicenseStoragePluginInstaller" />
+	<component key="atlassianMarketplaceUriFactory"
+		class="com.atlassian.upm.license.storage.lib.AtlassianMarketplaceUriFactoryImpl" />
+	<servlet name="License Servlet" i18n-name-key="license-servlet.name"
+		key="license-servlet" class="com.addteq.bamboo.plugin.servlet.LicenseServlet">
+		<description key="license-servlet.description">The License Servlet Plugin</description>
+		<url-pattern>/com.addteq.bamboo.plugin/license</url-pattern>
+	</servlet>
+	<rest name="addteq Rest Resource" i18n-name-key="addteq-rest-resource.name"
+		key="addteq-rest-resource" path="/addteqrest" version="1.0">
+		<description key="addteq-rest-resource.description">App Authentication REST Support
+		</description>
+	</rest>
+</atlassian-plugin>
